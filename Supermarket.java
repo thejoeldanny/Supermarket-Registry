@@ -7,6 +7,7 @@ public class Supermarket
     static int invoice[] = new int[20];
     public static void main(String[] args)
     {
+        String list[] = {"Name", "MRP", "Quanitity", "Cost"};
         Scanner S = new Scanner(System.in);
         int cost, ptr = 0;
         Supermarket smp = new Supermarket();
@@ -33,7 +34,7 @@ public class Supermarket
         }
         int total=0;
         System.out.println("****Invoice****");
-        System.out.println("Name            MRP            Quantity            Cost");
+        System.out.printf("%-20s %-20s %-20s %-20s%n", list[0], list[1], list[2], list[3]);
         for(int i=0; i<ptr; i=i+2)
         {
             int index = getindex(invoice[i]);
@@ -41,19 +42,19 @@ public class Supermarket
             String name1 = pname[index];
             int mrp = pcost[index];
             int cost1 = invoice[i+1];
-            System.out.println(name1+"            "+mrp+"            "+cost1/mrp+"            "+cost1);
+            System.out.printf("%-20s %-20d %-20d %-20d%n", name1,mrp,(cost1/mrp),cost1);
         }
         System.out.println("Your total is "+total);
         System.out.println("You have recieved "+(total/100)+" credit points!!!");
     }
 
-    public static int getindex(int id)
-    {
-        for(int i=0; i<10; i++)
-        {
-            if(pid[i]==id)
-                return i;
-        }
-        return -1;
-    }
+	static int getindex (int k)
+	{
+		for (int i = 0; i < 6; i++)
+		{
+			if (pid[i] == k)
+				return i;
+		}
+		return -1;
+	}
 }
